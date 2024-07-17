@@ -3,7 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import prisma from "@/lib/db";
 import Sidebar from "@/components/sidebar";
-
+import { ThemeProvider } from "@/components/theme-provider";
+import { ModeToggle } from "@/components/mode-toggle";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -20,10 +21,22 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex h-screen">
-          <Sidebar conversations={conversations} />
-          <main className="flex-1 overflow-auto">{children}</main>
-        </div>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="flex h-screen">
+            <Sidebar conversations={conversations} />
+            <main className="flex-1 overflow-auto">
+              <div className="float-right p-4">
+                <ModeToggle />
+              </div>
+              {children}
+            </main>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

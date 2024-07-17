@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Button } from "./ui/button";
 import { PlusIcon, MessageSquareIcon } from "lucide-react";
 import Link from "next/link";
+import { ModeToggle } from "./mode-toggle";
 type Conversation = {
   id: string;
   title: string;
