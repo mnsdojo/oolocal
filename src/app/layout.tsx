@@ -5,6 +5,7 @@ import prisma from "@/lib/db";
 import Sidebar from "@/components/sidebar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/mode-toggle";
+import { Toaster } from "@/components/ui/toaster";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -29,12 +30,8 @@ export default async function RootLayout({
         >
           <div className="flex h-screen">
             <Sidebar conversations={conversations} />
-            <main className="flex-1 overflow-auto">
-              <div className="float-right p-4">
-                <ModeToggle />
-              </div>
-              {children}
-            </main>
+            <main className="flex-1 overflow-auto">{children}</main>
+            <Toaster />
           </div>
         </ThemeProvider>
       </body>

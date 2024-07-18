@@ -7,7 +7,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { SendIcon } from "lucide-react";
 import ChatMessage from "@/components/chat-message";
 import EmptyChat from "@/components/empty-chat";
-
+// chat/{id}.tsx page
 function Page() {
   const { messages, input, handleInputChange, handleSubmit, isLoading } =
     useChat();
